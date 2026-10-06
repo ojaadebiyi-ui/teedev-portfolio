@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Admin — TeeDev</title>
+<meta name="robots" content="noindex,nofollow">
+<link rel="stylesheet" href="portfolio.css">
+</head>
+
+<body class="admin-page">
+
+<header class="navbar">
+  <div class="nav-container">
+
+    <a class="logo" href="index.html">
+      <img alt="TeeDev" src="img/teedev-logo.png">
+    </a>
+
+    <button
+      aria-expanded="false"
+      aria-label="Open navigation"
+      class="menu-toggle"
+      type="button">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+
+    <nav class="nav-menu">
+      <a href="index.html">Home</a>
+      <a href="about.html">About</a>
+      <a href="skills.html">Skills</a>
+      <a href="projects.html">Projects</a>
+      <a href="services.html">Services</a>
+      <a href="contact.html">Contact</a>
+      <a href="admin.html" class="admin-nav-link active">Admin</a>
+    </nav>
+
+    <a class="nav-button" href="index.html">
+      Back to site
+    </a>
+
+  </div>
+</header>
+
+<main>
+
+<section class="admin-auth-page" id="adminAuth">
+
+  <div class="admin-auth-card">
+
+    <p class="section-label">TEEDEV ADMIN</p>
+
+    <h1>
+      Manage your <span>projects.</span>
+    </h1>
+
+    <p class="admin-auth-copy">
+      Sign in with your Supabase admin account to manage
+      projects and experience entries.
+    </p>
+
+    <form id="adminLoginForm" class="admin-auth-form">
+
+      <label>
+        Email
+        <input
+          id="adminEmail"
+          type="email"
+          required
+          autocomplete="username"
+          placeholder="admin@email.com">
+      </label>
+
+      <label>
+        Password
+        <input
+          id="adminPassword"
+          type="password"
+          required
+          autocomplete="current-password"
+          placeholder="Your password">
+      </label>
+
+      <button
+        class="manager-primary"
+        type="submit">
+        Sign In
+      </button>
+
+      <p
+        id="adminLoginStatus"
+        class="manager-status"
+        aria-live="polite">
+      </p>
+
+    </form>
+
+    <a
+      class="admin-back-link"
+      href="index.html">
+      ← Back to portfolio
+    </a>
+
+  </div>
+
+</section>
+
+</main>
+
+<footer class="footer">
+  <div class="footer-container">
+    <div class="footer-bottom">
+
+      <span>
+        © 2026 Oluwateniola Adebiyi
+      </span>
+
+      <a
+        class="back-to-top"
+        href="index.html">
+        BACK TO SITE <span>↗</span>
+      </a>
+
+    </div>
+  </div>
+</footer>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="supabase-config.js"></script>
+<script src="admin.js"></script>
+</body>
+</html>

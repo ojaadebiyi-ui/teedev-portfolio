@@ -1,0 +1,628 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+<meta charset="utf-8">
+
+<meta
+  name="viewport"
+  content="width=device-width,initial-scale=1.0">
+
+<title>Project Manager — TeeDev</title>
+
+<meta
+  name="robots"
+  content="noindex,nofollow">
+
+<link
+  rel="stylesheet"
+  href="portfolio.css">
+
+</head>
+
+<body class="admin-page">
+
+<header class="navbar">
+
+  <div class="nav-container">
+
+    <a
+      class="logo"
+      href="index.html">
+
+      <img
+        alt="TeeDev"
+        src="img/teedev-logo.png">
+
+    </a>
+
+
+    <button
+      aria-expanded="false"
+      aria-label="Open navigation"
+      class="menu-toggle"
+      type="button">
+
+      <span></span>
+      <span></span>
+      <span></span>
+
+    </button>
+
+
+    <nav class="nav-menu">
+
+      <a href="index.html">
+        Home
+      </a>
+
+      <a href="about.html">
+        About
+      </a>
+
+      <a href="skills.html">
+        Skills
+      </a>
+
+      <a href="projects.html">
+        Projects
+      </a>
+
+      <a href="services.html">
+        Services
+      </a>
+
+      <a href="contact.html">
+        Contact
+      </a>
+
+      <a
+        href="admin.html"
+        class="admin-nav-link active">
+        Admin
+      </a>
+
+    </nav>
+
+
+    <a
+      class="nav-button"
+      href="index.html">
+      Back to site
+    </a>
+
+  </div>
+
+</header>
+
+
+<main>
+
+<section
+  class="project-manager-section"
+  id="projectManager">
+
+  <div class="manager-container">
+
+
+    <!-- HEADER -->
+
+    <div class="manager-header">
+
+      <div>
+
+        <p class="section-label">
+          PRIVATE ADMIN
+        </p>
+
+        <h2>
+          Project <span>Manager.</span>
+        </h2>
+
+        <p class="manager-subtitle">
+          Add, edit, reorder, publish or remove
+          projects and experience entries without
+          touching your code.
+        </p>
+
+      </div>
+
+
+      <div class="manager-actions">
+
+        <span
+          id="adminIdentity"
+          class="admin-identity">
+        </span>
+
+        <button
+          id="adminLogout"
+          class="manager-secondary"
+          type="button">
+
+          Log out
+
+        </button>
+
+      </div>
+
+    </div>
+
+
+    <!-- TABS -->
+
+    <div
+      class="manager-tabs"
+      role="tablist">
+
+      <button
+        class="manager-tab active"
+        data-manager-tab="projects"
+        type="button">
+
+        Projects
+
+      </button>
+
+
+      <button
+        class="manager-tab"
+        data-manager-tab="experience"
+        type="button">
+
+        Experience
+
+      </button>
+
+    </div>
+
+
+    <!-- TOOLBAR -->
+
+    <div class="manager-toolbar">
+
+      <button
+        class="manager-primary"
+        id="addProjectBtn"
+        type="button">
+
+        + Add Project
+
+      </button>
+
+
+      <button
+        class="manager-primary"
+        id="addExperienceBtn"
+        type="button"
+        hidden>
+
+        + Add Experience
+
+      </button>
+
+
+      <span
+        id="managerStatus"
+        class="manager-status"
+        aria-live="polite">
+      </span>
+
+    </div>
+
+
+    <!-- PROJECT LIST -->
+
+    <div
+      id="projectManagerList"
+      class="manager-list">
+    </div>
+
+
+    <!-- EXPERIENCE LIST -->
+
+    <div
+      id="experienceManagerList"
+      class="manager-list"
+      hidden>
+    </div>
+
+
+    <!-- PROJECT FORM -->
+
+    <form
+      id="projectForm"
+      class="manager-form"
+      hidden>
+
+      <div class="manager-form-heading">
+
+        <div>
+
+          <span id="projectFormMode">
+            NEW PROJECT
+          </span>
+
+          <h3 id="projectFormTitle">
+            Add a project
+          </h3>
+
+        </div>
+
+
+        <button
+          type="button"
+          class="manager-close"
+          data-close-form="projectForm">
+
+          ×
+
+        </button>
+
+      </div>
+
+
+      <input
+        type="hidden"
+        id="projectId">
+
+
+      <div class="manager-form-grid">
+
+        <label>
+          Title
+          <input
+            id="projectTitle"
+            required
+            maxlength="120">
+        </label>
+
+
+        <label>
+          Slug
+          <input
+            id="projectSlug"
+            maxlength="140"
+            placeholder="my-project">
+        </label>
+
+
+        <label>
+          Role
+          <input
+            id="projectRole"
+            maxlength="100"
+            placeholder="Developer">
+        </label>
+
+
+        <label>
+          Category
+          <input
+            id="projectCategory"
+            maxlength="100"
+            placeholder="Web Development">
+        </label>
+
+
+        <label>
+          Year
+          <input
+            id="projectYear"
+            type="number"
+            min="2000"
+            max="2100">
+        </label>
+
+
+        <label>
+          Status
+
+          <select id="projectStatus">
+
+            <option>
+              Live
+            </option>
+
+            <option>
+              In Development
+            </option>
+
+            <option>
+              Completed
+            </option>
+
+            <option>
+              Archived
+            </option>
+
+          </select>
+
+        </label>
+
+
+        <label class="manager-wide">
+
+          Live URL
+
+          <input
+            id="projectUrl"
+            type="url"
+            placeholder="https://example.com">
+
+        </label>
+
+
+        <label class="manager-wide">
+
+          Preview Image URL
+
+          <input
+            id="projectImage"
+            type="url"
+            placeholder="https://.../image.jpg">
+
+        </label>
+
+
+        <label class="manager-wide">
+
+          Description
+
+          <textarea
+            id="projectDescription"
+            rows="5"
+            required
+            maxlength="1200">
+          </textarea>
+
+        </label>
+
+
+        <label class="manager-wide">
+
+          Tags
+          <small>
+            comma separated
+          </small>
+
+          <input
+            id="projectTags"
+            placeholder="UI/UX, Responsive, JavaScript">
+
+        </label>
+
+
+        <label>
+
+          Featured
+
+          <select id="projectFeatured">
+
+            <option value="false">
+              No
+            </option>
+
+            <option value="true">
+              Yes
+            </option>
+
+          </select>
+
+        </label>
+
+
+        <label>
+
+          Display order
+
+          <input
+            id="projectOrder"
+            type="number"
+            min="0"
+            step="1"
+            value="0">
+
+        </label>
+
+      </div>
+
+
+      <div class="manager-form-actions">
+
+        <button
+          class="manager-secondary"
+          type="button"
+          data-close-form="projectForm">
+
+          Cancel
+
+        </button>
+
+
+        <button
+          class="manager-primary"
+          type="submit">
+
+          Save Project
+
+        </button>
+
+      </div>
+
+    </form>
+
+
+    <!-- EXPERIENCE FORM -->
+
+    <form
+      id="experienceForm"
+      class="manager-form"
+      hidden>
+
+      <div class="manager-form-heading">
+
+        <div>
+
+          <span id="experienceFormMode">
+            NEW EXPERIENCE
+          </span>
+
+          <h3 id="experienceFormTitle">
+            Add experience
+          </h3>
+
+        </div>
+
+
+        <button
+          type="button"
+          class="manager-close"
+          data-close-form="experienceForm">
+
+          ×
+
+        </button>
+
+      </div>
+
+
+      <input
+        type="hidden"
+        id="experienceId">
+
+
+      <div class="manager-form-grid">
+
+        <label>
+
+          Title
+
+          <input
+            id="experienceTitle"
+            required
+            maxlength="150">
+
+        </label>
+
+
+        <label>
+
+          Type
+
+          <input
+            id="experienceType"
+            maxlength="100"
+            placeholder="Project / Volunteer">
+
+        </label>
+
+
+        <label>
+
+          Year
+
+          <input
+            id="experienceYear"
+            type="text"
+            maxlength="30"
+            placeholder="2026">
+
+        </label>
+
+
+        <label>
+
+          Status
+
+          <input
+            id="experienceStatus"
+            maxlength="50"
+            placeholder="Ongoing">
+
+        </label>
+
+
+        <label class="manager-wide">
+
+          Description
+
+          <textarea
+            id="experienceDescription"
+            rows="5"
+            required
+            maxlength="1000">
+          </textarea>
+
+        </label>
+
+
+        <label>
+
+          Display order
+
+          <input
+            id="experienceOrder"
+            type="number"
+            min="0"
+            step="1"
+            value="0">
+
+        </label>
+
+      </div>
+
+
+      <div class="manager-form-actions">
+
+        <button
+          class="manager-secondary"
+          type="button"
+          data-close-form="experienceForm">
+
+          Cancel
+
+        </button>
+
+
+        <button
+          class="manager-primary"
+          type="submit">
+
+          Save Experience
+
+        </button>
+
+      </div>
+
+    </form>
+
+  </div>
+
+</section>
+
+</main>
+
+
+<footer class="footer">
+
+  <div class="footer-container">
+
+    <div class="footer-bottom">
+      <span>
+        © 2026 Oluwateniola Adebiyi
+      </span>
+      <a
+        class="back-to-top"
+        href="index.html">
+        BACK TO SITE
+        <span>↗</span>
+      </a>
+    </div>
+  </div>
+</footer>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="supabase-config.js"></script>
+<script src="project-manager.js"></script>
+</body>
+</html>
