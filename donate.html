@@ -1,1 +1,167 @@
 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Support TeeDev and help fund creative digital projects, learning, and innovation.">
+  <title>Support TeeDev | TeeDev</title>
+  <link rel="stylesheet" href="portfolio.css">
+  <style>
+    .donate-page {
+      width: min(680px, 92%);
+      margin: 70px auto;
+    }
+
+    .donate-card {
+      padding: clamp(22px, 5vw, 42px);
+      border: 1px solid var(--border-color, #dedee8);
+      border-radius: 24px;
+      background: var(--card-bg, #fff);
+      box-shadow: 0 16px 50px rgba(20, 30, 70, .08);
+    }
+
+    .donate-card h1 {
+      font-size: clamp(2rem, 6vw, 3.4rem);
+      line-height: 1.1;
+      margin-bottom: 16px;
+    }
+
+    .donate-copy { line-height: 1.8; opacity: .8; }
+
+    .donation-amounts {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 12px;
+      margin: 24px 0;
+    }
+
+    .amount-option {
+      border: 1px solid #d5d9e5;
+      border-radius: 12px;
+      padding: 15px;
+      background: transparent;
+      cursor: pointer;
+      font: inherit;
+      font-weight: 700;
+    }
+
+    .amount-option.active {
+      border-color: #315bdb;
+      background: #edf2ff;
+      color: #2347ba;
+    }
+
+    .donate-field { display: block; margin: 18px 0; }
+
+    .donate-field span {
+      display: block;
+      margin-bottom: 8px;
+      font-weight: 600;
+    }
+
+    .donate-field input {
+      width: 100%;
+      box-sizing: border-box;
+      padding: 14px;
+      border: 1px solid #cbd0dc;
+      border-radius: 10px;
+      font: inherit;
+    }
+
+    .donate-submit {
+      width: 100%;
+      padding: 16px;
+      margin-top: 10px;
+      border: 0;
+      border-radius: 12px;
+      background: #315bdb;
+      color: white;
+      font: inherit;
+      font-weight: 700;
+      cursor: pointer;
+    }
+
+    .donate-submit:disabled { opacity: .6; cursor: wait; }
+
+    #donationStatus {
+      margin-top: 18px;
+      line-height: 1.6;
+      overflow-wrap: anywhere;
+    }
+
+    .donate-secure {
+      font-size: .9rem;
+      text-align: center;
+      opacity: .7;
+      margin-top: 18px;
+    }
+
+    @media (max-width: 420px) {
+      .donation-amounts { gap: 8px; }
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <nav aria-label="Main navigation">
+      <a href="index.html" aria-label="TeeDev homepage">TeeDev</a>
+      <a href="index.html">Home</a>
+      <a href="projects.html">Projects</a>
+      <a href="contact.html">Contact</a>
+      <a href="donate.html" aria-current="page">Donate</a>
+    </nav>
+  </header>
+
+  <main class="donate-page">
+    <section class="donate-card">
+      <p>SUPPORT INDEPENDENT CREATIVITY</p>
+      <h1>Help me build what's next.</h1>
+      <p class="donate-copy">
+        If my work, projects, or learning journey inspire you, you can
+        support me with a donation. Every contribution helps fund
+        continued learning, experimentation, and better digital projects.
+        Thank you for being part of the journey.
+      </p>
+
+      <form id="donationForm">
+        <p><strong>Choose a donation amount</strong></p>
+
+        <div class="donation-amounts">
+          <button class="amount-option active" type="button" data-amount="1000">₦1,000</button>
+          <button class="amount-option" type="button" data-amount="2500">₦2,500</button>
+          <button class="amount-option" type="button" data-amount="5000">₦5,000</button>
+          <button class="amount-option" type="button" data-amount="10000">₦10,000</button>
+        </div>
+
+        <label class="donate-field">
+          <span>Donation amount (₦)</span>
+          <input id="donationAmount" type="number" min="100" max="1000000"
+                 step="1" value="1000" required>
+        </label>
+
+        <label class="donate-field">
+          <span>Your email address</span>
+          <input id="donorEmail" type="email" autocomplete="email"
+                 placeholder="you@example.com" required>
+        </label>
+
+        <button class="donate-submit" id="donateSubmit" type="submit">
+          Donate securely with Paystack
+        </button>
+
+        <p id="donationStatus" role="status" aria-live="polite"></p>
+      </form>
+
+      <p class="donate-secure">
+        Payments are processed through Paystack's secure checkout.
+        Your card or banking details are not collected by this page.
+      </p>
+    </section>
+  </main>
+
+  <script src="donation.js" defer></script>
+</body>
+</html>
+
