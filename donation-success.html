@@ -1,0 +1,69 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Donation Status | TeeDev</title>
+  <link rel="stylesheet" href="portfolio.css">
+</head>
+<body>
+  <main style="width:min(600px,90%);margin:100px auto;text-align:center;">
+    <h1 id="statusTitle">Checking your payment...</h1>
+    <p id="statusMessage" role="status" aria-live="polite">
+      Please wait while Paystack confirms your transaction.
+    </p>
+    <p id="donationAmount"></p>
+    <a href="index.html">Return to TeeDev</a>
+  </main>
+
+  <script>
+    (async () => {
+      const title = document.getElementById("statusTitle");
+      const message = document.getElementById("statusMessage");
+      const amount = document.getElementById("donationAmount");
+
+      const params = new URLSearchParams(window.location.search);
+      const reference = params.get("reference");
+
+      // Remove payment details from the visible address bar.
+      window.history.replaceState({}, document.title,
+        window.location.pathname);
+
+      if (!reference) {
+        title.textContent = "No payment reference found";
+        message.textContent =
+          "We couldn't find a transaction to verify. If you paid, please contact TeeDev with your Paystack receipt.";
+        return;
+      }
+
+      try {
+        const response = await fetch(
+          "/.netlify/functions/verify-donation?reference=" +
+          encodeURIComponent(reference)
+        );
+
+        const result = await response.json();
+
+        if (!response.ok || !result.success) {
+          title.textContent = "Payment not confirmed yet";
+          message.textContent =
+            result.message ||
+            "We could not confirm this payment. If money was deducted, keep your receipt and contact TeeDev.";
+          return;
+        }
+
+        title.textContent = "Thank you for supporting TeeDev!";
+        message.textContent = result.message;
+        amount.textContent =
+          "Verified donation: ₦" +
+          Number(result.amount).toLocaleString("en-NG");
+      } catch {
+        title.textContent = "Unable to check payment";
+        message.textContent =
+          "Please refresh this page to try verification again. Keep your payment receipt if you have already paid.";
+      }
+    })();
+  </script>
+</body>
+</html>
