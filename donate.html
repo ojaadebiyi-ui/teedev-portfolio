@@ -1,167 +1,196 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#080A0D">
   <meta name="description" content="Support TeeDev and help fund creative digital projects, learning, and innovation.">
   <title>Support TeeDev | TeeDev</title>
+  <link rel="icon" type="image/png" href="TeeDev Logo.png">
   <link rel="stylesheet" href="portfolio.css">
-  <style>
-    .donate-page {
-      width: min(680px, 92%);
-      margin: 70px auto;
-    }
-
-    .donate-card {
-      padding: clamp(22px, 5vw, 42px);
-      border: 1px solid var(--border-color, #dedee8);
-      border-radius: 24px;
-      background: var(--card-bg, #fff);
-      box-shadow: 0 16px 50px rgba(20, 30, 70, .08);
-    }
-
-    .donate-card h1 {
-      font-size: clamp(2rem, 6vw, 3.4rem);
-      line-height: 1.1;
-      margin-bottom: 16px;
-    }
-
-    .donate-copy { line-height: 1.8; opacity: .8; }
-
-    .donation-amounts {
-      display: grid;
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-      gap: 12px;
-      margin: 24px 0;
-    }
-
-    .amount-option {
-      border: 1px solid #d5d9e5;
-      border-radius: 12px;
-      padding: 15px;
-      background: transparent;
-      cursor: pointer;
-      font: inherit;
-      font-weight: 700;
-    }
-
-    .amount-option.active {
-      border-color: #315bdb;
-      background: #edf2ff;
-      color: #2347ba;
-    }
-
-    .donate-field { display: block; margin: 18px 0; }
-
-    .donate-field span {
-      display: block;
-      margin-bottom: 8px;
-      font-weight: 600;
-    }
-
-    .donate-field input {
-      width: 100%;
-      box-sizing: border-box;
-      padding: 14px;
-      border: 1px solid #cbd0dc;
-      border-radius: 10px;
-      font: inherit;
-    }
-
-    .donate-submit {
-      width: 100%;
-      padding: 16px;
-      margin-top: 10px;
-      border: 0;
-      border-radius: 12px;
-      background: #315bdb;
-      color: white;
-      font: inherit;
-      font-weight: 700;
-      cursor: pointer;
-    }
-
-    .donate-submit:disabled { opacity: .6; cursor: wait; }
-
-    #donationStatus {
-      margin-top: 18px;
-      line-height: 1.6;
-      overflow-wrap: anywhere;
-    }
-
-    .donate-secure {
-      font-size: .9rem;
-      text-align: center;
-      opacity: .7;
-      margin-top: 18px;
-    }
-
-    @media (max-width: 420px) {
-      .donation-amounts { gap: 8px; }
-    }
-  </style>
+  <link rel="stylesheet" href="donate.css">
 </head>
-<body>
+<body class="donate-body">
 
-  <header>
-    <nav aria-label="Main navigation">
-      <a href="index.html" aria-label="TeeDev homepage">TeeDev</a>
-      <a href="index.html">Home</a>
-      <a href="projects.html">Projects</a>
-      <a href="contact.html">Contact</a>
-      <a href="donate.html" aria-current="page">Donate</a>
-    </nav>
+  <!-- NAVIGATION -->
+  <header class="navbar">
+    <div class="nav-container">
+      <a class="logo" href="index.html" aria-label="TeeDev Home">
+        <img src="TeeDev Logo.png" alt="TeeDev" style="width:50px;height:auto;">
+      </a>
+
+      <button class="menu-toggle" type="button" aria-expanded="false"
+              aria-label="Open navigation" aria-controls="primary-navigation">
+        <span></span><span></span><span></span>
+      </button>
+
+      <nav class="nav-menu" id="primary-navigation">
+        <a href="index.html">Home</a>
+        <a href="about.html">About</a>
+        <a href="skills.html">Skills</a>
+        <a href="projects.html">Projects</a>
+        <a href="services.html">Services</a>
+        <a href="contact.html">Contact</a>
+        <a href="donate.html" class="donate-nav-link" aria-current="page">Support TeeDev ↗</a>
+      </nav>
+
+      <a class="nav-button" href="contact.html">Let's Talk</a>
+    </div>
   </header>
 
   <main class="donate-page">
-    <section class="donate-card">
-      <p>SUPPORT INDEPENDENT CREATIVITY</p>
-      <h1>Help me build what's next.</h1>
-      <p class="donate-copy">
-        If my work, projects, or learning journey inspire you, you can
-        support me with a donation. Every contribution helps fund
-        continued learning, experimentation, and better digital projects.
-        Thank you for being part of the journey.
-      </p>
+    <div class="donate-glow donate-glow--blue" aria-hidden="true"></div>
+    <div class="donate-glow donate-glow--orange" aria-hidden="true"></div>
 
-      <form id="donationForm">
-        <p><strong>Choose a donation amount</strong></p>
+    <div class="donate-layout">
 
-        <div class="donation-amounts">
-          <button class="amount-option active" type="button" data-amount="1000">₦1,000</button>
-          <button class="amount-option" type="button" data-amount="2500">₦2,500</button>
-          <button class="amount-option" type="button" data-amount="5000">₦5,000</button>
-          <button class="amount-option" type="button" data-amount="10000">₦10,000</button>
+      <!-- STORY -->
+      <section class="donate-story" aria-labelledby="donateTitle">
+        <p class="donate-eyebrow"><span></span>SUPPORT INDEPENDENT CREATIVITY</p>
+
+        <h1 id="donateTitle">
+          Help me build <span class="donate-highlight">what's next.</span>
+        </h1>
+
+        <p class="donate-lead">
+          If my work, projects, or learning journey inspire you, you can
+          support me with a donation. Every contribution helps fund
+          continued learning, experimentation, and better digital projects.
+        </p>
+
+        <ul class="donate-impact" aria-label="What your support funds">
+          <li>
+            <span class="impact-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24"><path d="M4 19.5V5a2 2 0 0 1 2-2h13v16H6a2 2 0 0 0-2 2Zm0 0A2 2 0 0 0 6 22h13"/></svg>
+            </span>
+            <div>
+              <h2>Learning &amp; certifications</h2>
+              <p>Courses, books and exam fees in cybersecurity and front-end development.</p>
+            </div>
+          </li>
+          <li>
+            <span class="impact-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24"><path d="m8 9-4 3 4 3M16 9l4 3-4 3M14 5l-4 14"/></svg>
+            </span>
+            <div>
+              <h2>Building real projects</h2>
+              <p>Hosting, domains and tools that turn ideas into working products.</p>
+            </div>
+          </li>
+          <li>
+            <span class="impact-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24"><path d="M12 3 4 6v6c0 5 3.5 8 8 9 4.5-1 8-4 8-9V6l-8-3Z"/><path d="m9 12 2 2 4-4"/></svg>
+            </span>
+            <div>
+              <h2>Open, shared knowledge</h2>
+              <p>Write-ups and resources that help other learners on the same path.</p>
+            </div>
+          </li>
+        </ul>
+
+        <blockquote class="donate-quote">
+          <p>“No amount is too small. Every naira is a vote of confidence — thank you for being part of the journey.”</p>
+          <footer>
+            <img src="profile.jpeg" alt="" width="44" height="44">
+            <span><strong>Oluwateniola Adebiyi</strong><br>Founder, TeeDev</span>
+          </footer>
+        </blockquote>
+      </section>
+
+      <!-- DONATION CARD -->
+      <section class="donate-card" aria-labelledby="donateCardTitle">
+        <div class="donate-card-head">
+          <h2 id="donateCardTitle">Make a donation</h2>
+          <span class="donate-badge">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="5" y="11" width="14" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></svg>
+            Secure
+          </span>
         </div>
 
-        <label class="donate-field">
-          <span>Donation amount (₦)</span>
-          <input id="donationAmount" type="number" min="100" max="1000000"
-                 step="1" value="1000" required>
-        </label>
+        <form id="donationForm" novalidate>
+          <fieldset class="donate-fieldset">
+            <legend>Choose an amount</legend>
 
-        <label class="donate-field">
-          <span>Your email address</span>
-          <input id="donorEmail" type="email" autocomplete="email"
-                 placeholder="you@example.com" required>
-        </label>
+            <div class="donation-amounts">
+              <button class="amount-option active" type="button" data-amount="1000">
+                <span class="amount-emoji" aria-hidden="true">☕</span>
+                <strong>₦1,000</strong>
+                <small>Buy me a coffee</small>
+              </button>
+              <button class="amount-option" type="button" data-amount="2500">
+                <span class="amount-emoji" aria-hidden="true">📚</span>
+                <strong>₦2,500</strong>
+                <small>Fuel a study session</small>
+              </button>
+              <button class="amount-option" type="button" data-amount="5000">
+                <span class="amount-emoji" aria-hidden="true">🚀</span>
+                <strong>₦5,000</strong>
+                <small>Ship a project</small>
+              </button>
+              <button class="amount-option" type="button" data-amount="10000">
+                <span class="amount-emoji" aria-hidden="true">💎</span>
+                <strong>₦10,000</strong>
+                <small>Champion supporter</small>
+              </button>
+            </div>
+          </fieldset>
 
-        <button class="donate-submit" id="donateSubmit" type="submit">
-          Donate securely with Paystack
-        </button>
+          <label class="donate-field">
+            <span>Or enter a custom amount</span>
+            <span class="input-wrap">
+              <span class="input-prefix" aria-hidden="true">₦</span>
+              <input id="donationAmount" type="number" inputmode="numeric"
+                     min="100" max="1000000" step="1" value="1000" required>
+            </span>
+          </label>
 
-        <p id="donationStatus" role="status" aria-live="polite"></p>
-      </form>
+          <label class="donate-field">
+            <span>Your email address</span>
+            <span class="input-wrap">
+              <span class="input-prefix" aria-hidden="true">
+                <svg viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg>
+              </span>
+              <input id="donorEmail" type="email" autocomplete="email"
+                     placeholder="you@example.com" required>
+            </span>
+          </label>
 
-      <p class="donate-secure">
-        Payments are processed through Paystack's secure checkout.
-        Your card or banking details are not collected by this page.
-      </p>
-    </section>
+          <p class="donate-summary" aria-live="polite">
+            You're giving <strong id="donationSummary">₦1,000</strong>
+          </p>
+
+          <button class="donate-submit" id="donateSubmit" type="submit">
+            <span class="donate-submit-label">Donate securely with Paystack</span>
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+          </button>
+
+          <p id="donationStatus" role="status" aria-live="polite"></p>
+        </form>
+
+        <ul class="donate-trust">
+          <li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3 4 6v6c0 5 3.5 8 8 9 4.5-1 8-4 8-9V6l-8-3Z"/></svg>Paystack checkout</li>
+          <li><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="2" y="5" width="20" height="14" rx="2"/><path d="M2 10h20"/></svg>Card, bank &amp; transfer</li>
+          <li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>Instant receipt</li>
+        </ul>
+
+        <p class="donate-secure">
+          Your card or banking details are never collected by this page —
+          payments are handled entirely by Paystack.
+        </p>
+      </section>
+    </div>
   </main>
+
+  <footer class="footer">
+    <div class="footer-container">
+      <div class="footer-bottom">
+        <span>© 2026 Oluwateniola Adebiyi</span>
+        <span>Thank you for supporting independent work</span>
+        <a class="back-to-top" href="index.html">BACK TO HOME <span>↑</span></a>
+      </div>
+    </div>
+  </footer>
 
   <script src="donation.js" defer></script>
 </body>
 </html>
-

@@ -5,16 +5,28 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Donation Status | TeeDev</title>
+  <link rel="icon" type="image/png" href="TeeDev Logo.png">
   <link rel="stylesheet" href="portfolio.css">
+  <link rel="stylesheet" href="donate.css">
 </head>
-<body>
-  <main style="width:min(600px,90%);margin:100px auto;text-align:center;">
+<body class="donate-body">
+  <main class="donate-page">
+    <div class="donate-glow donate-glow--blue" aria-hidden="true"></div>
+    <div class="donate-glow donate-glow--orange" aria-hidden="true"></div>
+    <section class="donate-card donate-result" style="position:relative;top:0;">
+    <div class="result-icon" aria-hidden="true">
+      <svg viewBox="0 0 24 24"><path d="M12 21s-7-4.4-9.3-9A5.3 5.3 0 0 1 12 6.4 5.3 5.3 0 0 1 21.3 12C19 16.6 12 21 12 21Z"/></svg>
+    </div>
     <h1 id="statusTitle">Checking your payment...</h1>
     <p id="statusMessage" role="status" aria-live="polite">
       Please wait while Paystack confirms your transaction.
     </p>
     <p id="donationAmount"></p>
-    <a href="index.html">Return to TeeDev</a>
+    <div class="result-actions">
+      <a class="donate-submit" href="index.html">Return to TeeDev</a>
+      <a class="result-secondary" href="projects.html">See my projects</a>
+    </div>
+    </section>
   </main>
 
   <script>
